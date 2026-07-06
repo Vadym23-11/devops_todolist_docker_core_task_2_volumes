@@ -7,7 +7,17 @@ MySQL image: https://hub.docker.com/r/klptu/mysql-local
 Application image: https://hub.docker.com/r/klptu/todoapp
 
 
-1. Running the MySQL container (with a persistent volume)
+1. Building the images locally
+
+Build the MySQL image:
+
+docker build -t mysql-local:1.0.0 -f Dockerfile.mysql .
+
+Build the application image:
+
+docker build -t todoapp:2.0.0 .
+
+2. Running the MySQL container (with a persistent volume)
 
 Pull the image from Docker Hub (or use the locally built one):
 
@@ -29,7 +39,7 @@ Get the container's internal IP address (needed by the application container to 
 
 docker inspect -f "{{.NetworkSettings.IPAddress}}" mysql
 
-2. Running the application container
+3. Running the application container
 
 Pull the image from Docker Hub (or use the locally built one):
 
@@ -50,7 +60,7 @@ Check the logs to confirm a successful startup:
 
 docker logs todoapp
 
-3. Accessing the application
+4. Accessing the application
 
 Once both containers are running, open a browser and go to:
 
